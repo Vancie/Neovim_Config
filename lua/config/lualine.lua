@@ -14,12 +14,18 @@ lualine.setup({
     },
     sections = {
         lualine_a = {'mode'},
-        lualine_b = {'branch'},
-        lualine_c = {'branch'},
-        lualine_x = {'mode'},
-        lualine_y = {},
-        lualine_z = {},
-          
+        lualine_b = {
+            'branch', 'diff', 'diagnostics'
+        },
+        lualine_c = {
+            {
+                'filename',
+                path = 1,
+            }
+        },
+        lualine_x = {'encoding'},
+        lualine_y = {'filetype'},
+        lualine_z = {'hostname'},
     }
 })
 

@@ -1,5 +1,3 @@
-
-
 local keymap = vim.keymap.set
 
 local g = vim.g
@@ -30,3 +28,5 @@ keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 
+-- Switch between header and translation unit --
+keymap("n", "<leader>cs", ":ClangdSwitchSourceHeader<CR>")
