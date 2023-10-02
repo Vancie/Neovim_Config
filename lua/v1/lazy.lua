@@ -1,29 +1,27 @@
-
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = {
-    -- File Tree Explorer -- 
+    -- File Tree Explorer --
     {
-      'stevearc/oil.nvim',
-      opts = {},
-      -- Optional dependencies
-      dependencies = { "nvim-tree/nvim-web-devicons" },
+        'stevearc/oil.nvim',
+        opts = {},
+        -- Optional dependencies
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
-    -- ColorSchemes -- 
+    -- ColorSchemes --
 
     {
         "rebelot/kanagawa.nvim"
@@ -36,39 +34,40 @@ local plugins = {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         dependencies = {
-          -- LSP Support
-          {'neovim/nvim-lspconfig'},             -- Required
-          {'williamboman/mason.nvim'},           -- Optional
-          {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-          -- Autocompletion
-          {'hrsh7th/nvim-cmp'},     -- Required
-          {'hrsh7th/cmp-nvim-lsp'}, -- Required
-          {'L3MON4D3/LuaSnip'},     -- Required
-      }
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },     -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
+        }
     },
 
     -- Completion --
-    {"hrsh7th/cmp-buffer"}, -- buffer completions
-    {"hrsh7th/cmp-path"}, -- path completions
-    {"hrsh7th/cmp-cmdline"}, -- cmdline completions
-    {"saadparwaiz1/cmp_luasnip"}, -- snippet completions
+    { "hrsh7th/cmp-buffer" },       -- buffer completions
+    { "hrsh7th/cmp-path" },         -- path completions
+    { "hrsh7th/cmp-cmdline" },      -- cmdline completions
+    { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
 
-      -- snippets
-    {"L3MON4D3/LuaSnip"}, --snippet engine
-    {"rafamadriz/friendly-snippets"}, -- a bunch of snippets to use
+    -- snippets
+    { "L3MON4D3/LuaSnip" },             --snippet engine
+    { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
 
 
-    -- Telescope -- 
+    -- Telescope --
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.3',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.3',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
     -- Harpoon --
     { "ThePrimeagen/harpoon" },
 
-    -- Comments -- 
+    -- Comments --
     { "folke/todo-comments.nvim" },
 
     -- AutoPairs --
@@ -81,15 +80,15 @@ local plugins = {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
-        -- add any options here
+            -- add any options here
         },
         dependencies = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-        "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
-        "rcarriga/nvim-notify",
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
         }
     },
     {
@@ -107,6 +106,13 @@ local plugins = {
             require("nvim-surround").setup({
                 -- Configuration here, or leave empty to use defaults
             })
+        end
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        event = "VeryLazy",
+        opts = function()
+            return require("config.null-ls")
         end
     }
 }

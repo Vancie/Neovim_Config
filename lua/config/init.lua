@@ -1,4 +1,3 @@
-
 require("config.cmake")
 require("config.oil")
 require("config.colors")

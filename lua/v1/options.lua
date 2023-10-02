@@ -14,5 +14,6 @@ set.wrap = false
 set.termguicolors = true
 set.splitbelow = true
 set.splitright = true
+set.cindent = true
 
 
